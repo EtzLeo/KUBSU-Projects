@@ -4,7 +4,7 @@
 findNumber(1000,Kol,Res,_,_,Res,Kol):-!.
 findNumber(X,LenMax,Max,L,R,Res,Kol):-
     X1 is X+1,
-    findR(X1,L,R,T),
+    findKolindR(X1,L,R,T),
     C is T,not(C=0),
     R1 is 10*T mod X1,
     findKol(X1,C,R1,1,M),
@@ -12,8 +12,8 @@ findNumber(X,LenMax,Max,L,R,Res,Kol):-
     (LenMax>M1 ->  findNumber(X1,LenMax,Max,1,1,Res,Kol);findNumber(X1,M1,X1,1,1,Res,Kol)).
 findNumber(X,LenMax,Max,L,R,Res,Kol):- X1 is X+1, findNumber(X1,LenMax,Max,L,R,Res,Kol).
 
-findR(X,X,R,R):-!.
-findR(X,L,R,T):-L1 is L+1, R1 is 10*R mod X, findR(X,L1,R1,T).
+findKolindR(X,X,R,R):-!.
+findKolindR(X,L,R,T):-L1 is L+1, R1 is 10*R mod X, findKolindR(X,L1,R1,T).
 
 findKol(_,C,C,K,K):-!.
 findKol(X,C,R,K,M):-R1 is 10*R mod X, K1 is K+1, findKol(X,C,R1,K1,M).
