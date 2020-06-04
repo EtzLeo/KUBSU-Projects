@@ -141,3 +141,34 @@ graphWorker :-
 	abolish(vertex/1),
 	abolish(edge/1),
 	abolish(result/1).
+
+% Тестовая версия
+graphWorkerTest :-
+	Vertexes = ['a', 'b', 'c', 'd', 'g'],
+
+	dynamic(edge/2),
+	assert(edge('a', 'b')),
+	assert(edge('a', 'g')),
+
+	assert(edge('b', 'a')),
+	assert(edge('b', 'g')),
+	assert(edge('b', 'd')),
+	assert(edge('b', 'c')),
+
+	assert(edge('c', 'b')),
+	assert(edge('c', 'd')),
+
+	assert(edge('g', 'a')),
+	assert(edge('g', 'b')),
+	assert(edge('g', 'd')),
+
+	assert(edge('d', 'b')),
+	assert(edge('d', 'c')),
+	assert(edge('d', 'g')),
+
+	dynamic(result/1),
+	minimumSet(Vertexes),
+
+	abolish(vertex/1),
+	abolish(edge/2),
+	abolish(result/1).
