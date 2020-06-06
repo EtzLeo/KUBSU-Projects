@@ -23,7 +23,31 @@ let isPrime N =
         else
             isPrime_ 3
 
+// Строит заданный список для некоторого числа N
+let buildDivs (N:int) =
+    // Возвращает список, в котором столько вхождений делителя checkDiv, сколько раз подряд число number на него делится.
+    // Например, для 125 и 5 будет возвращено [5, 5, 5], а для взаимно-простых []
+    let rec degreeDelToList number (checkDiv:int) tail =
+        if (number % checkDiv = 0) then
+            degreeDelToList (number / checkDiv) checkDiv (checkDiv::tail)
+        else
+            tail
+
+    // Перебирает делители и заносит простые и их повторения в список
+    let rec buildDivs_ currentDiv (list:int list) =
+        match currentDiv with
+        | 0 -> list
+        | _ -> 
+            if (isPrime currentDiv) then
+                let t = degreeDelToList N currentDiv []
+                buildDivs_ (currentDiv-1) (t @ list)
+            else
+                buildDivs_ (currentDiv-1) list
+
+    buildDivs_ (N-1) []
+
 [<EntryPoint>]
 let main argv =
-    printfn "%A" argv
+    let number = Convert.ToInt32(Console.ReadLine())
+    printf "%A" (buildDivs number)
     0 // return an integer exit code
