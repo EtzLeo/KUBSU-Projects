@@ -50,4 +50,5 @@ let buildDivs (N:int) =
 let main argv =
     let number = Convert.ToInt32(Console.ReadLine())
     printf "%A" (buildDivs number)
+    Console.ReadLine() |>ignore
     0 // return an integer exit code

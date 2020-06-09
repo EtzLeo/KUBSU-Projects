@@ -127,10 +127,6 @@ graphWorker :-
 	write('Input vertexes number: '), read(VertexesNumber),
 	read_list(Vertexes, VertexesNumber),
 	write('Entered vertexes: '), write(Vertexes), nl, nl,
-
-	allVertexesList(L),
-	write(L), nl,
-
 	dynamic(edge/2),
 	write('Input edges number: '), read(EdgesNumber),
 	inputEdges(EdgesNumber),
@@ -139,7 +135,7 @@ graphWorker :-
 	minimumSet(Vertexes),
 
 	abolish(vertex/1),
-	abolish(edge/1),
+	abolish(edge/2),
 	abolish(result/1).
 
 % Тестовая версия
