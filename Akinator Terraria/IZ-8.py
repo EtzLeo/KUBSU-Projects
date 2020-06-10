@@ -125,7 +125,7 @@ def setQuest2State():
 	nextQuestButton.configure(command=setQuest3State)
 
 def setQuest1State():
-	quest1Text = 'Встречается только после убийства стены плоти?\r\n'
+	quest1Text = 'Встерчается ли ваш враг только после убийства стены плоти?\r\n'
 	questLabel.configure(text=quest1Text)
 	partialRadioButton.configure(state=DISABLED)
 	nextQuestButton.configure(command=setQuest2State)

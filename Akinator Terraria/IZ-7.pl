@@ -93,11 +93,12 @@ akinator :-
 		),
 
 		(
-			nl, write("Ваш враг очень похож на "), write(X), write("! Это он?"), nl,
+			write("Ваш враг очень похож на "), write(X), write("! Это он?"), nl,
 			write("1. Да"), nl,
 			write("2. Нет"), nl,
 			read(IsIt),
 			IsIt = 1,
+			abolish(result/1),
 			write("Угадал!"),
 			fail
 		)
